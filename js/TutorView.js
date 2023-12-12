@@ -25,7 +25,7 @@ export default class TutorView extends Backbone.View {
   }
 
   render() {
-    this.$el.html(Handlebars.templates.tutor(this.model.toJSON()));
+    Adapt.trigger('tutorView:triggerRender', this)
     _.defer(this.postRender.bind(this));
   }
 
@@ -72,4 +72,7 @@ export default class TutorView extends Backbone.View {
     this.toggleFeedback({ shouldOpen: false, shouldManageFocus: false });
   }
 
+  static get template() {
+    return 'tutor.jsx';
+  }
 }
